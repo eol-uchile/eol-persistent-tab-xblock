@@ -1,0 +1,1 @@
+from .eolpersistenttab import EolPersistentTabXBlock

@@ -1,0 +1,9 @@
+/* CSS for EolPersistentTabXBlock */
+
+.eolpersistenttab_block .count {
+    font-weight: bold;
+}
+
+.eolpersistenttab_block p {
+    cursor: pointer;
+}
