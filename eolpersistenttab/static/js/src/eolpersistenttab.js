@@ -1,22 +1,35 @@
-/* Javascript for EolPersistentTabXBlock. */
-function EolPersistentTabXBlock(runtime, element) {
+/*
+       _=,_
+    o_/6 /#\
+    \__ |##/
+     ='|--\
+       /   #'-.
+       \#|_   _'-. /
+        |/ \_( # |" 
+       C/ ,--___/
+*/
 
-    function updateCount(result) {
-        $('.count', element).text(result.count);
-    }
-
-    var handlerUrl = runtime.handlerUrl(element, 'increment_count');
-
-    $('p', element).click(function(eventObject) {
-        $.ajax({
-            type: "POST",
-            url: handlerUrl,
-            data: JSON.stringify({"hello": "world"}),
-            success: updateCount
-        });
-    });
+function EolPersistentTabXBlock(runtime, element, settings) {
 
     $(function ($) {
-        /* Here's where you'd do things on page load. */
+        var modal = document.getElementById("modal_" + settings.location);
+        var btn = document.getElementById("btn_" + settings.location);
+        var span = document.getElementById("close_" + settings.location);
+
+        /* Open Modal */
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        /* Close modal */
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     });
 }
+

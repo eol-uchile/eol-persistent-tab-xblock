@@ -1,70 +1,66 @@
-"""TO-DO: Write a description of what this XBlock is."""
-
+# -*- coding: utf-8 -*-
 import pkg_resources
+
+from django.template import Context, Template
+
 from xblock.core import XBlock
-from xblock.fields import Integer, Scope
+from xblock.fields import Integer, Scope, String
 from xblock.fragment import Fragment
+from xblockutils.studio_editable import StudioEditableXBlockMixin
 
+# Make '_' a no-op so we can scrape strings
+_ = lambda text: text
 
-class EolPersistentTabXBlock(XBlock):
-    """
-    TO-DO: document what your XBlock does.
-    """
+class EolPersistentTabXBlock(StudioEditableXBlockMixin, XBlock):
 
-    # Fields are defined on the class.  You can access them in your code as
-    # self.<fieldname>.
-
-    # TO-DO: delete count, and define your own fields.
-    count = Integer(
-        default=0, scope=Scope.user_state,
-        help="A simple counter, to show something happening",
+    icon_class = String(
+        default="other",
+        scope=Scope.settings,
     )
+
+    display_name = String(
+        display_name=_("Nombre de la pestana"),
+        default="Eol Persistent Tab XBlock",
+        scope=Scope.settings,
+    )
+
+    # Content
+    content = String(
+        display_name="Contenido de la Pestana", 
+        multiline_editor='html', 
+        resettable_editor=False,
+        default="<p>Contenido de la pestana.</p>", 
+        scope=Scope.settings,
+        help="Indica el contenido de la pestana"
+    )
+
+    editable_fields = ('display_name', 'content')
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
         data = pkg_resources.resource_string(__name__, path)
         return data.decode("utf8")
 
-    # TO-DO: change this view to display your data your own way.
     def student_view(self, context=None):
-        """
-        The primary view of the EolPersistentTabXBlock, shown to students
-        when viewing courses.
-        """
-        html = self.resource_string("static/html/eolpersistenttab.html")
-        frag = Fragment(html.format(self=self))
+        context_html = self.get_context()
+        template = self.render_template('static/html/eolpersistenttab.html', context_html)
+        frag = Fragment(template)
         frag.add_css(self.resource_string("static/css/eolpersistenttab.css"))
         frag.add_javascript(self.resource_string("static/js/src/eolpersistenttab.js"))
-        frag.initialize_js('EolPersistentTabXBlock')
+        settings = {
+            'location'  : str(self.location).split('@')[-1]
+        }
+        frag.initialize_js('EolPersistentTabXBlock', json_args=settings)
         return frag
 
-    # TO-DO: change this handler to perform your own actions.  You may need more
-    # than one handler, or you may not need any handlers at all.
-    @XBlock.json_handler
-    def increment_count(self, data, suffix=''):
-        """
-        An example handler, which increments the data.
-        """
-        # Just to show data coming in...
-        assert data['hello'] == 'world'
+    def get_context(self):
+        return {
+            'xblock': self,
+            'location': str(self.location).split('@')[-1]
+        }
 
-        self.count += 1
-        return {"count": self.count}
-
-    # TO-DO: change this to create the scenarios you'd like to see in the
-    # workbench while developing your XBlock.
-    @staticmethod
-    def workbench_scenarios():
-        """A canned scenario for display in the workbench."""
-        return [
-            ("EolPersistentTabXBlock",
-             """<eolpersistenttab/>
-             """),
-            ("Multiple EolPersistentTabXBlock",
-             """<vertical_demo>
-                <eolpersistenttab/>
-                <eolpersistenttab/>
-                <eolpersistenttab/>
-                </vertical_demo>
-             """),
-        ]
+    def render_template(self, template_path, context):
+        template_str = self.resource_string(template_path)
+        template = Template(template_str)
+        return template.render(Context(context))
+    
