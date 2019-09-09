@@ -1,0 +1,10 @@
+{% load i18n %}
+<div class="eolpersistenttab_block">
+    <div class="alert alert-info">
+        <p>{% trans 'El botón de este XBlock se mostrará únicamente en el LMS.' %}</p>
+        <p><strong>{% trans 'Está permitido <u>solo un</u> XBlock de este tipo en cada unidad.' %}</strong></p>
+    </div>
+</div>
+<div class="eolpersistenttab_content" style="width:80%;">
+   {{ xblock.content | safe }}
+</div>

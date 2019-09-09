@@ -36,10 +36,19 @@ class EolPersistentTabXBlock(StudioEditableXBlockMixin, XBlock):
 
     editable_fields = ('display_name', 'content')
 
+    has_author_view = True
+
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
         data = pkg_resources.resource_string(__name__, path)
         return data.decode("utf8")
+
+    def author_view(self, context=None):
+        context_html = self.get_context()
+        template = self.render_template('static/html/author_view.html', context_html)
+        frag = Fragment(template)
+        frag.add_css(self.resource_string("static/css/eolpersistenttab.css"))
+        return frag
 
     def student_view(self, context=None):
         context_html = self.get_context()

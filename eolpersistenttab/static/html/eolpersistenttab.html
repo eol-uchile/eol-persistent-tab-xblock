@@ -1,10 +1,12 @@
 <div class="eolpersistenttab_block">
-    <button id="btn_{{location}}">{{ xblock.display_name }}</button>
+    <div class="btn-fixed animated fadeInRight">
+        <a id="btn_{{location}}" class="persistent-btn">
+            <span>{{ xblock.display_name | safe }}</span>
+        </a>
+    </div>
     <div id="modal_{{location}}" class="modal">
         <div class="modal-content animate-top">
             <span id="close_{{location}}" class="close">&times;</span>
             {{ xblock.content | safe }}
         </div>
     </div>
-</div>
-
