@@ -24,8 +24,8 @@ class EolPersistentTabXBlock(StudioEditableXBlockMixin, XBlock):
         scope=Scope.settings,
     )
 
-    # Content
-    content = String(
+    # Text
+    text = String(
         display_name="Contenido de la Pestana", 
         multiline_editor='html', 
         resettable_editor=False,
@@ -34,7 +34,7 @@ class EolPersistentTabXBlock(StudioEditableXBlockMixin, XBlock):
         help="Indica el contenido de la pestana"
     )
 
-    editable_fields = ('display_name', 'content')
+    editable_fields = ('display_name', 'text')
 
     has_author_view = True
 
@@ -72,4 +72,23 @@ class EolPersistentTabXBlock(StudioEditableXBlockMixin, XBlock):
         template_str = self.resource_string(template_path)
         template = Template(template_str)
         return template.render(Context(context))
+
+    @staticmethod
+    def workbench_scenarios():
+        """A canned scenario for display in the workbench."""
+        return [
+            ("EolPersistentTabXBlock",
+             """<eolpersistenttab/>
+             """),
+            ("Multiple EolPersistentTabXBlock",
+             """<vertical_demo>
+                <eolpersistenttab
+                />
+                <eolpersistenttab
+                />
+                <eolpersistenttab
+                />
+                </vertical_demo>
+             """),
+        ]
     
