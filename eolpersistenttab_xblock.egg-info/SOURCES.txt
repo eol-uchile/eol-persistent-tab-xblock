@@ -1,7 +1,10 @@
+README.md
+setup.py
 eolpersistenttab/__init__.py
 eolpersistenttab/eolpersistenttab.py
 eolpersistenttab/static/README.txt
 eolpersistenttab/static/css/eolpersistenttab.css
+eolpersistenttab/static/html/author_view.html
 eolpersistenttab/static/html/eolpersistenttab.html
 eolpersistenttab/static/js/src/eolpersistenttab.js
 eolpersistenttab_xblock.egg-info/PKG-INFO

@@ -1,10 +1,10 @@
 Metadata-Version: 1.0
 Name: eolpersistenttab-xblock
 Version: 0.1
-Summary: eolpersistenttab XBlock
+Summary: XBlock with sticky button that shows a modal with html content
 Home-page: UNKNOWN
 Author: UNKNOWN
 Author-email: UNKNOWN
-License: UNKNOWN
+License: AGPL v3
 Description: UNKNOWN
 Platform: UNKNOWN
