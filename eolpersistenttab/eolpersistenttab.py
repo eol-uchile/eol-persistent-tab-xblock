@@ -34,6 +34,14 @@ class EolPersistentTabXBlock(StudioEditableXBlockMixin, XBlock):
         help="Indica el contenido de la pestana"
     )
 
+    theme = String(
+        display_name = _("Estilo"),
+        help = _("Cambiar estilo de la pregunta"),
+        default = "SumaySigue",
+        values = ["SumaySigue", "Media", "Didactica","RedFid"],
+        scope = Scope.settings
+    )
+
     editable_fields = ('display_name', 'text')
 
     has_author_view = True

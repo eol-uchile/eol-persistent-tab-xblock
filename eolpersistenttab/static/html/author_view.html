@@ -6,5 +6,10 @@
     </div>
 </div>
 <div class="eolpersistenttab_content" style="width:80%;">
+    <select name="theme" id="theme">
+        {% for option in field_theme.values %}
+        <option value="{{ option }}" {% if option == xblock.theme %}selected{% endif %}>{% trans option %}</option>
+        {% endfor %}
+    </select>
    {{ xblock.text | safe }}
 </div>
