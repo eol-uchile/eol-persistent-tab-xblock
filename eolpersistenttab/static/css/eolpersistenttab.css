@@ -140,13 +140,13 @@
 
 /* RedFid */
 
-.eolpersistenttab_block .RedFid .btn-fixed {
+.eolpersistenttab_block.RedFid .btn-fixed {
   position: fixed;
   right: 2em;
   top: 50vh;
 }
 
-.eolpersistenttab_block .RedFid .persistent-btn {
+.eolpersistenttab_block.RedFid .persistent-btn {
     display: flex;
     padding: 8px 16px;
     border-radius: 3px;
@@ -164,14 +164,14 @@
 
 
 
-.eolpersistenttab_block .RedFid .persistent-btn:hover {
+.eolpersistenttab_block.RedFid .persistent-btn:hover {
     transition: 0.5s;
     opacity: 1;
     box-shadow: 5px 5px 0 #b4008d;
 }
 
 
-.eolpersistenttab_block .RedFid .persistent-btn span {
+.eolpersistenttab_block.RedFid .persistent-btn span {
     transform: skewX(15deg);
     text-transform: uppercase;
   }
