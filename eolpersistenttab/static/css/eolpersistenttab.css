@@ -152,13 +152,13 @@
     border-radius: 3px;
     cursor: pointer;
     text-decoration: none !important;
-    /*font-family: 'Poppins', sans-serif;*/
+    font-family: 'initial';
     font-size: 1.3em;
     color: white !important;
     background: #AD65DB;
     opacity: 0.8;
     transition: 1s;
-    box-shadow: 8px 8px 0 #0075b482;
+    box-shadow: 8px 8px 0 #ae65db75;
     transform: skewX(-15deg);
 }
 
@@ -167,11 +167,11 @@
 .eolpersistenttab_block.RedFid .persistent-btn:hover {
     transition: 0.5s;
     opacity: 1;
-    box-shadow: 5px 5px 0 #AD65DB;
+    box-shadow: 5px 5px 0 #ae65dbab;
 }
 
 
 .eolpersistenttab_block.RedFid .persistent-btn span {
     transform: skewX(15deg);
-    text-transform: uppercase;
+    text-transform: capitalize;
   }
