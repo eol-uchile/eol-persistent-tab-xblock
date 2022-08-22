@@ -137,3 +137,41 @@
     -webkit-animation-name:fadeInRight;
     animation-name:fadeInRight
 }
+
+/* RedFid */
+
+.eolpersistenttab_block .RedFid .btn-fixed {
+  position: fixed;
+  right: 2em;
+  top: 50vh;
+}
+
+.eolpersistenttab_block .RedFid .persistent-btn {
+    display: flex;
+    padding: 8px 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none !important;
+    /*font-family: 'Poppins', sans-serif;*/
+    font-size: 1.3em;
+    color: white !important;
+    background: #b4008d;
+    opacity: 0.8;
+    transition: 1s;
+    box-shadow: 8px 8px 0 #0075b482;
+    transform: skewX(-15deg);
+}
+
+
+
+.eolpersistenttab_block .RedFid .persistent-btn:hover {
+    transition: 0.5s;
+    opacity: 1;
+    box-shadow: 5px 5px 0 #b4008d;
+}
+
+
+.eolpersistenttab_block .RedFid .persistent-btn span {
+    transform: skewX(15deg);
+    text-transform: uppercase;
+  }
