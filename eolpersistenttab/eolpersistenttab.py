@@ -24,6 +24,14 @@ class EolPersistentTabXBlock(StudioEditableXBlockMixin, XBlock):
         scope=Scope.settings,
     )
 
+    theme = String(
+        display_name = _("Estilo"),
+        help = _("Cambiar estilo de la pregunta"),
+        default = "deafult",
+        values = ["deafult","RedFid"],
+        scope = Scope.settings
+    )
+
     # Text
     text = String(
         display_name="Contenido de la Pestana", 
@@ -34,15 +42,7 @@ class EolPersistentTabXBlock(StudioEditableXBlockMixin, XBlock):
         help="Indica el contenido de la pestana"
     )
 
-    theme = String(
-        display_name = _("Estilo"),
-        help = _("Cambiar estilo de la pregunta"),
-        default = "SumaySigue",
-        values = ["SumaySigue", "Media", "Didactica","RedFid"],
-        scope = Scope.settings
-    )
-
-    editable_fields = ('display_name', 'text')
+    editable_fields = ('display_name','theme', 'text')
 
     has_author_view = True
 
