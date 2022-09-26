@@ -1,7 +1,12 @@
-<div class="eolpersistenttab_block">
+<div class="eolpersistenttab_block {{xblock.theme}}">
     <div class="btn-fixed animated fadeInRight">
         <a id="btn_{{location}}" class="persistent-btn">
-            <span>{{ xblock.display_name | safe }}</span>
+            <span>
+                {% if xblock.theme == 'RedFid' %}
+                    <img src="https://static.sumaysigue.uchile.cl/cmmeduformacion/produccion/assets/img/lapizpapel_icon.png" />
+                {% endif %}
+                {{ xblock.display_name | safe }}
+            </span>
         </a>
     </div>
     <div id="modal_{{location}}" class="modal">
@@ -10,3 +15,4 @@
             {{ xblock.text | safe }}
         </div>
     </div>
+</div>
