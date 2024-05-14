@@ -30,6 +30,8 @@ function EolPersistentTabXBlock(runtime, element, settings) {
                 modal.style.display = "none";
             }
         }
+        
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);// Renderiza MathJax nuevamente
     });
 }
 
