@@ -31,7 +31,21 @@ function EolPersistentTabXBlock(runtime, element, settings) {
             }
         }
         
-        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);// Renderiza MathJax nuevamente
+        var persitentid = "persistenttab_" + settings.location;
+        renderMathForSpecificElements(persitentid);
     });
+
+    function renderMathForSpecificElements(id) {
+        if (typeof MathJax !== "undefined") {
+            var $persistent = $('#' + id);
+            if ($persistent.length) {
+                $persistent.find('.text').each(function (index, persistelem) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, persistelem]);
+                });
+            }
+        } else {
+            console.warn("MathJax no está cargado.");
+        }
+    }
 }
 
