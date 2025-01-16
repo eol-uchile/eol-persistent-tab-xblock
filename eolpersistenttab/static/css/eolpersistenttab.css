@@ -60,7 +60,7 @@
 .eolpersistenttab_block .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 9999; /* Sit on top */
+    z-index: 9999 !important; /* Sit on top */
     left: 0;
     top: 0;
     padding-top: 30vh; /* Location of the box */

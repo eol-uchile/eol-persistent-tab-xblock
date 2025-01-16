@@ -39,7 +39,8 @@ function EolPersistentTabXBlock(runtime, element, settings) {
         if (typeof MathJax !== "undefined") {
             var $persistent = $('#' + id);
             if ($persistent.length) {
-                $persistent.find('.text').each(function (index, persistelem) {
+                console.log("Render mathjax in modal... " + "#" + id);
+                $persistent.find('.modal-content-persistent, .persistent-btn').each(function (index, persistelem) {
                     MathJax.Hub.Queue(["Typeset", MathJax.Hub, persistelem]);
                 });
             }
