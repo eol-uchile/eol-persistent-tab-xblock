@@ -1,24 +1,22 @@
 # -*- coding: utf-8 -*-
+# Python Standard Libraries
+import logging
 
+# Installed packages (via pip)
+from django.test import Client
 from mock import patch, Mock
 
-
-from django.test import TestCase, Client
-
-from common.djangoapps.util.testing import UrlResetMixin
-from xmodule.modulestore.tests.django_utils import ModuleStoreTestCase
-
-from xmodule.modulestore.tests.factories import CourseFactory
-from common.djangoapps.student.tests.factories import UserFactory, CourseEnrollmentFactory
-from xblock.field_data import DictFieldData
+# Edx dependencies
 from common.djangoapps.student.roles import CourseStaffRole
+from common.djangoapps.student.tests.factories import UserFactory, CourseEnrollmentFactory
+from common.djangoapps.util.testing import UrlResetMixin
+from xblock.field_data import DictFieldData
+from xmodule.modulestore.tests.django_utils import ModuleStoreTestCase
+from xmodule.modulestore.tests.factories import CourseFactory
 
+# Internal project dependencies
 from .eolpersistenttab import EolPersistentTabXBlock
 
-from six import text_type
-import json
-
-import logging
 logger = logging.getLogger(__name__)
 
 XBLOCK_RUNTIME_USER_ID = 99
