@@ -125,3 +125,11 @@ class TestEolPersistentTabXBlock(UrlResetMixin, ModuleStoreTestCase):
         student_view = self.xblock.student_view()
         student_view_html = student_view.content
         self.assertIn('eolpersistenttab_block', student_view_html)
+    
+    def test_author_view_render(self):
+        """
+            Check if author view is rendering
+        """
+        author_view = self.xblock.author_view()
+        author_view_html = author_view.content
+        self.assertIn('class="eolpersistenttab_block"', author_view_html)
