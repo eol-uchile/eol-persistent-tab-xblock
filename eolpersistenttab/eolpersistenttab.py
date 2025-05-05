@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
+# Installed packages (via pip)
+from django.template import Context, Template
 import pkg_resources
 
-from django.template import Context, Template
-
+# Edx dependencies
 from xblock.core import XBlock
-from xblock.fields import Integer, Scope, String
+from xblock.fields import Scope, String
 from xblock.fragment import Fragment
 from xblockutils.studio_editable import StudioEditableXBlockMixin
 
